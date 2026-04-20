@@ -34,7 +34,7 @@ export default function ConfirmCard({
   className,
   titleClassName,   
   textClassName,    
-  deadlineText = "Por favor confirma tu asistencia antes del 1 de mayo de 2026",
+  deadlineText = "Por favor confirma tu asistencia antes del 28 de abril de 2026",
   titleWhenOpen = "Confirmar asistencia",
   titleWhenDone = "¡Gracias por confirmar!",
   titleWhenDeclined = "¡Respuesta registrada!", 
