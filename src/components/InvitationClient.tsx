@@ -26,7 +26,6 @@ import {
 } from "next/font/google";
 
 type Family = { id: string; nombreFamilia: string; nroPersonas: number };
-type CSSVarProps<T extends string> = React.CSSProperties & Record<T, string>;
 
 const SOFT_BG_CARD = "#FFFFFF";
 
