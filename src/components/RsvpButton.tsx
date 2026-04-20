@@ -26,7 +26,6 @@ import { motion } from "framer-motion";
 
 // --- Paleta botánica unificada ---
 const SOFT_BORDER = "#D6C6D9"; // Lila Suave
-const SOFT_ACCENT = "#7A96AD"; // Azul Sereno oscuro para el icono
 const SOFT_TEXT = "#334155"; // Gris Cenizo
 const BG_LILA = "#F0EBF2"; // Fondo modal lila suave
 const BG_HUESO = "#FAFAFA"; // Fondo crema suavizado para el icono
@@ -50,7 +49,6 @@ function asistiranLabel(n?: number) {
 }
 
 export default function RsvpButton({
-  triggerClassName = "",
   triggerLabel = "Confirmar",
   prefillFamilyId,
   prefillFamily,

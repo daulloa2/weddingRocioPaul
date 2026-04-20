@@ -22,26 +22,19 @@ import {
   Cormorant_Garamond,
   Lora,
   Mr_De_Haviland,
-  Mea_Culpa,
-  Tangerine,
-  Lavishly_Yours,
-  Rouge_Script
+  Mea_Culpa
 } from "next/font/google";
 
 type Family = { id: string; nombreFamilia: string; nroPersonas: number };
 type CSSVarProps<T extends string> = React.CSSProperties & Record<T, string>;
 
 const SOFT_BG_CARD = "#FFFFFF";
-const SOFT_ACCENT = "#D6C6D9";
 
 const greatVibes = Great_Vibes({ subsets: ["latin"], weight: "400", variable: "--font-greatvibes", display: "swap" });
 const cormorant = Cormorant_Garamond({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-cormorant", display: "swap" });
 const lora = Lora({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-lora", display: "swap" });
 const mr_de_haviland = Mr_De_Haviland({ subsets: ["latin"], weight: "400", variable: "--font-mrdehaviland", display: "swap" });
 const mea_culpa = Mea_Culpa({ subsets: ["latin"], weight: "400", variable: "--font-meaculpa", display: "swap" });
-const tangerine = Tangerine({ subsets: ["latin"], weight: "400", variable: "--font-tangerine", display: "swap" });
-const lavishlyYours = Lavishly_Yours({ subsets: ["latin"], weight: "400", variable: "--font-lavishlyyours", display: "swap" });
-const rougeScript = Rouge_Script({ subsets: ["latin"], weight: "400", variable: "--font-rougescript", display: "swap" });
 
 const CountdownBanner = dynamic(() => import("@/components/CountdownBanner"), { ssr: false });
 
@@ -57,7 +50,6 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
   const [confirmed, setConfirmed] = React.useState(false);
   const [declined, setDeclined] = React.useState(false);
   const [checking, setChecking] = React.useState(true);
-  const garlandVar: CSSVarProps<"--garland"> = { ["--garland"]: "clamp(110px,26vw,200px)" };
 
   // Lee estado desde el backend por familyId
   React.useEffect(() => {

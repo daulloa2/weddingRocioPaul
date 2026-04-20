@@ -1,6 +1,6 @@
 "use client";
 
-import { Great_Vibes, Cormorant_Garamond, Mea_Culpa } from "next/font/google";
+import { Cormorant_Garamond, Mea_Culpa } from "next/font/google";
 
 // --- Paleta de colores ---
 const LILA_BORDER = "#D6C6D9"; // Lila Suave para los bordes
@@ -9,12 +9,7 @@ const TEXT_MAIN = "#334155"; // Gris Cenizo para títulos y textos principales
 const TEXT_MUTED = "#475569"; // Gris cenizo ligeramente más claro para direcciones/hora
 
 const mea_culpa = Mea_Culpa({ subsets: ["latin"], weight: "400", variable: "--font-meaculpa", display: "swap" });
-const greatVibes = Great_Vibes({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-greatvibes",
-  display: "swap",
-});
+
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600"],

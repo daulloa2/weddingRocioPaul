@@ -11,7 +11,6 @@ import {
 
 // --- Paleta botánica unificada ---
 const SOFT_ACCENT = "#a785ad";
-const SOFT_TEXT = "#334155"; // Gris Cenizo
 
 // Colores de estado suavizados para la paleta
 const COLOR_SUCCESS = "#759280"; // Verde salvia suave

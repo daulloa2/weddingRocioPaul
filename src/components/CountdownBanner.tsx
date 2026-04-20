@@ -1,10 +1,9 @@
 "use client";
 import * as React from "react";
-import { Mea_Culpa, Lora, Great_Vibes } from "next/font/google";
+import { Mea_Culpa, Lora } from "next/font/google";
 
 const meaCulpa = Mea_Culpa({ subsets: ["latin"], weight: "400", variable: "--font-meaculpa", display: "swap" });
 const lora = Lora({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-lora", display: "swap" });
-const greatVibes = Great_Vibes({ subsets: ["latin"], weight: "400", variable: "--font-greatvibes", display: "swap" });
 function pad(n: number) { return String(n).padStart(2, "0"); }
 
 export default function CountdownBanner({ date, className }: { date: Date; className?: string }) {
