@@ -173,25 +173,25 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
                 Con la bendición de Dios y <br /> nuestros queridos padres
               </h2>
 
-              {/* 4. Sección: Padres de la novia */}
+              {/* 5. Sección: Padres del novio */}
               <div className="mb-10">
                 <h3 className="text-stone-400 uppercase tracking-[0.15em] text-sm mb-4 font-light">
                   Padres de la novia
                 </h3>
                 <p className="text-slate-800 text-lg sm:text-xl font-serif leading-relaxed">
-                  Sara Encarnacion Mocha <br />
-                  Segundo Santos Rivera †
+                  Esperanza Encalada Córdova <br />
+                  Nelson Ribera Sánchez
                 </p>
               </div>
-
-              {/* 5. Sección: Padres del novio */}
+              
+              {/* 4. Sección: Padres de la novia */}
               <div className="mb-10">
                 <h3 className="text-stone-400 uppercase tracking-[0.15em] text-sm mb-4 font-light">
                   Padres del novio
                 </h3>
                 <p className="text-slate-800 text-lg sm:text-xl font-serif leading-relaxed">
-                  Esperanza Encalada Córdova <br />
-                  Nelson Ribera Sánchez
+                  Sara Encarnacion Mocha <br />
+                  Segundo Santos Rivera †
                 </p>
               </div>
 
