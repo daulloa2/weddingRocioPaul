@@ -137,7 +137,7 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
         </HeroCover>
 
         {/* 2 — Info Padrinos (hoja blanca) */}
-        <RevealSection>
+        
           <section
             className="relative z-10 w-full py-16 px-4"
             style={{
@@ -206,7 +206,7 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
               </div>
             </div>
           </section>
-        </RevealSection>
+      
 
         {/* 3 — Texto + BigDate + Countdown + CalendarMonth (panel baby blue) */}
         <RevealSection>
