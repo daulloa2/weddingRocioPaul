@@ -40,7 +40,7 @@ const CountdownBanner = dynamic(() => import("@/components/CountdownBanner"), { 
 const WEDDING_DATE = new Date("2026-05-09T16:00:00");
 
 const CHURCH_NAME = "Iglesia Santo Domingo";
-const CHURCH_MAPS_URL = "https://maps.app.goo.gl/FxZVETqsTi8tRQG56";
+const CHURCH_MAPS_URL = "https://maps.app.goo.gl/7bUZ1voFL1YbDbHc9";
 const RECEPTION_NAME = "Hakan";
 const RECEPTION_MAPS_URL = "https://maps.app.goo.gl/wRBXe9A4DfBNwx5z5";
 
