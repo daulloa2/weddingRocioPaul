@@ -10,12 +10,10 @@ type Props = {
   title?: string;
   artist?: string;
   cover?: string;
-  initialVolume?: number; // 0..1
+  initialVolume?: number;
   loop?: boolean;
   className?: string;
-  /** Reproducir automáticamente si el navegador lo permite (por defecto: false) */
   autoplay?: boolean;
-  /** Pausar al ocultar la página / cambiar de app (por defecto: true) */
   stopWhenHidden?: boolean;
 };
 
@@ -33,10 +31,9 @@ export default function BackgroundAudio({
   const audioRef = React.useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [isMuted, setIsMuted] = React.useState(false);
-  const [blocked, setBlocked] = React.useState(false); // autoplay bloqueado
+  const [blocked, setBlocked] = React.useState(false);
   const [ready, setReady] = React.useState(false);
 
-  // Preferencia guardada
   React.useEffect(() => {
     const pref = localStorage.getItem("bg-music");
     if (pref === "off") {
@@ -45,7 +42,6 @@ export default function BackgroundAudio({
     }
   }, []);
 
-  // Setup + (auto)play opcional
   React.useEffect(() => {
     const el = audioRef.current;
     if (!el) return;
@@ -59,59 +55,64 @@ export default function BackgroundAudio({
       artwork: cover ? [{ src: cover, sizes: "512x512", type: "image/png" }] : [],
     });
 
-    const tryAutoplay = async () => {
-      try {
-        await el.play();
-        setIsPlaying(true);
-        setBlocked(false);
-      } catch {
-        setBlocked(true);
-      } finally {
-        setReady(true);
+    const tryAutoplay = () => {
+      const playPromise = el.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+            setBlocked(false);
+          })
+          .catch(() => {
+            setBlocked(true);
+          })
+          .finally(() => {
+            setReady(true);
+          });
       }
     };
 
-    // Solo intentamos autoplay si:
-    // - el prop autoplay está en true
-    // - el usuario no desactivó la música
-    // - la página está visible
     if (
       autoplay &&
       localStorage.getItem("bg-music") !== "off" &&
       document.visibilityState === "visible"
     ) {
-      void tryAutoplay();
+      tryAutoplay();
     } else {
       setReady(true);
     }
 
-    // Primer gesto (si el autoplay fue bloqueado)
-    const onFirstGesture = async () => {
+    // Refactorizado para no usar async/await y usar eventos más universales
+    const onFirstGesture = () => {
       if (!audioRef.current || isPlaying) return;
-      try {
-        await audioRef.current.play();
-        setIsPlaying(true);
-        setBlocked(false);
-      } catch {}
-      window.removeEventListener("pointerdown", onFirstGesture);
+      
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+            setBlocked(false);
+          })
+          .catch(() => {});
+      }
+      
+      window.removeEventListener("click", onFirstGesture);
+      window.removeEventListener("touchend", onFirstGesture);
       window.removeEventListener("keydown", onFirstGesture);
-      window.removeEventListener("touchstart", onFirstGesture);
     };
 
-    window.addEventListener("pointerdown", onFirstGesture, { once: true, passive: true });
+    window.addEventListener("click", onFirstGesture, { once: true });
+    window.addEventListener("touchend", onFirstGesture, { once: true, passive: true });
     window.addEventListener("keydown", onFirstGesture, { once: true });
-    window.addEventListener("touchstart", onFirstGesture, { once: true, passive: true });
 
     return () => {
       cleanupMs();
-      window.removeEventListener("pointerdown", onFirstGesture);
+      window.removeEventListener("click", onFirstGesture);
+      window.removeEventListener("touchend", onFirstGesture);
       window.removeEventListener("keydown", onFirstGesture);
-      window.removeEventListener("touchstart", onFirstGesture);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [src, title, artist, cover, autoplay, initialVolume]);
 
-  // Pausar cuando la página se oculta / sales de la app (iOS/Android)
   React.useEffect(() => {
     if (!stopWhenHidden) return;
 
@@ -126,7 +127,7 @@ export default function BackgroundAudio({
       if (document.visibilityState === "hidden") hardPause();
     };
     const onPageHide = () => hardPause();
-    const onBlur = () => hardPause(); // fallback
+    const onBlur = () => hardPause();
 
     document.addEventListener("visibilitychange", onVisibility);
     window.addEventListener("pagehide", onPageHide);
@@ -139,14 +140,21 @@ export default function BackgroundAudio({
     };
   }, [stopWhenHidden]);
 
-  const play = async () => {
-    try {
-      await audioRef.current?.play();
-      setIsPlaying(true);
-      setBlocked(false);
-      localStorage.setItem("bg-music", "on");
-    } catch {
-      setBlocked(true);
+  // Refactorizado a promesas .then() en lugar de async/await
+  const play = () => {
+    if (!audioRef.current) return;
+    const playPromise = audioRef.current.play();
+    
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          setIsPlaying(true);
+          setBlocked(false);
+          localStorage.setItem("bg-music", "on");
+        })
+        .catch(() => {
+          setBlocked(true);
+        });
     }
   };
 
@@ -172,10 +180,11 @@ export default function BackgroundAudio({
         preload="auto"
         loop={loop}
         playsInline
-        crossOrigin="anonymous"
+        /* ELIMINADO: crossOrigin="anonymous" */
         className="hidden"
       />
 
+      {/* El resto de la UI permanece intacto */}
       <div
         className={
           "pointer-events-auto fixed bottom-4 left-1/2 -translate-x-1/2 z-40 rounded-full bg-black/60 text-white backdrop-blur px-3 py-2 shadow-lg " +
