@@ -209,7 +209,7 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
       
 
         {/* 3 — Texto + BigDate + Countdown + CalendarMonth (panel baby blue) */}
-        <RevealSection>
+        
           <section
             className="relative px-4 sm:px-6 py-6 sm:py-8"
             style={{
@@ -254,11 +254,11 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
               </div>
             </div>
           </section>
-        </RevealSection>
+      
 
 
         {/* 6 — Imagen */}
-        <RevealSection>
+      
           <section className="grid gap-4">
             <div
               className="relative mt-0 w-full aspect-[16/10] overflow-hidden"
@@ -267,9 +267,9 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
               <Image src="/assets/6.jpg" alt="Momentos" fill sizes="100vw" className="object-cover" loading="lazy" />
             </div>
           </section>
-        </RevealSection>
+        
         {/* 4 — Venue */}
-        <RevealSection>
+        
           <section
             className={[
               "[--corner:clamp(112px,38vw,260px)]",
@@ -338,9 +338,9 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
 
             </div>
           </section>
-        </RevealSection>
+        
         {/* 6 — Imagen */}
-        <RevealSection>
+        
           <section className="grid gap-4">
             <div
               className="relative mt-0 w-full aspect-[16/10] overflow-hidden"
@@ -355,10 +355,10 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
               />
             </div>
           </section>
-        </RevealSection>
+        
 
         {/* 5 — Timeline */}
-        <RevealSection>
+        
           <section
             className={[
               "[--corner:clamp(112px,38vw,260px)]",
@@ -388,10 +388,10 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
               itemClassName={`${lora.className}`}
             />
           </section>
-        </RevealSection>
+        
 
         {/* 9 — Carrusel */}
-        <RevealSection>
+        
           <section className="grid gap-3 [--garland:clamp(110px,26vw,200px)]">
             <GalleryCarousel
               aspect={4 / 3}
@@ -406,9 +406,9 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
               className={`${cormorant.className} text-3xl`}
             />
           </section>
-        </RevealSection>
+        
         {/* 8 — Recomendaciones + Regalos */}
-        <RevealSection>
+        
           <RecGiftsSection
             className=""
             titleClassName={`${mea_culpa.className} text-[40px] sm:text-[50px] leading-tight mb-12 text-stone-600 `}
@@ -438,18 +438,18 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
             </section>
 
           )}
-        </RevealSection>
+      
 
 
 
         {/* 12 — Cierre */}
-        <RevealSection>
+        
           <HeroCover src="/assets/11.jpg" alt="Nos vemos pronto" objectPosition="60% 20%">
             <h1 className={`text-center text-5xl sm:text-8xl ${greatVibes.className} text-white drop-shadow`}>
               ¡Nos vemos en la boda!
             </h1>
           </HeroCover>
-        </RevealSection>
+        
       </div>
     </main>
   );
