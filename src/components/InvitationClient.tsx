@@ -22,7 +22,8 @@ import {
   Cormorant_Garamond,
   Lora,
   Mr_De_Haviland,
-  Mea_Culpa
+  Mea_Culpa,
+  MonteCarlo
 } from "next/font/google";
 
 type Family = { id: string; nombreFamilia: string; nroPersonas: number };
@@ -34,13 +35,13 @@ const cormorant = Cormorant_Garamond({ subsets: ["latin"], weight: ["400", "500"
 const lora = Lora({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-lora", display: "swap" });
 const mr_de_haviland = Mr_De_Haviland({ subsets: ["latin"], weight: "400", variable: "--font-mrdehaviland", display: "swap" });
 const mea_culpa = Mea_Culpa({ subsets: ["latin"], weight: "400", variable: "--font-meaculpa", display: "swap" });
-
+const montecarlo = MonteCarlo({ subsets: ["latin"], weight: "400", variable: "--font-montecarlo", display: "swap" });
 const CountdownBanner = dynamic(() => import("@/components/CountdownBanner"), { ssr: false });
 
 const WEDDING_DATE = new Date("2026-05-09T16:00:00");
 
 const CHURCH_NAME = "Iglesia Santo Domingo";
-const CHURCH_MAPS_URL = "https://maps.app.goo.gl/7bUZ1voFL1YbDbHc9";
+const CHURCH_MAPS_URL = "https://maps.app.goo.gl/FxZVETqsTi8tRQG56";
 const RECEPTION_NAME = "Hakan";
 const RECEPTION_MAPS_URL = "https://maps.app.goo.gl/wRBXe9A4DfBNwx5z5";
 
@@ -137,7 +138,7 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
         </HeroCover>
 
         {/* 2 — Info Padrinos (hoja blanca) */}
-        
+        <RevealSection>
           <section
             className="relative z-10 w-full py-16 px-4"
             style={{
@@ -173,43 +174,43 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
                 Con la bendición de Dios y <br /> nuestros queridos padres
               </h2>
 
-              {/* 5. Sección: Padres del novio */}
-              <div className="mb-10">
-                <h3 className="text-stone-400 uppercase tracking-[0.15em] text-sm mb-4 font-light">
-                  Padres de la novia
-                </h3>
-                <p className="text-slate-800 text-lg sm:text-xl font-serif leading-relaxed">
-                  Esperanza Encalada Córdova <br />
-                  Nelson Ribera Sánchez
-                </p>
-              </div>
-              
               {/* 4. Sección: Padres de la novia */}
               <div className="mb-10">
-                <h3 className="text-stone-400 uppercase tracking-[0.15em] text-sm mb-4 font-light">
-                  Padres del novio
+                <h3 className={`${mea_culpa.className} text-stone-400 text-[40px] sm:text-[50px] text-sm mb-4 font-light`}>
+                  Padres de la novia
                 </h3>
-                <p className="text-slate-800 text-lg sm:text-xl font-serif leading-relaxed">
-                  Sara Encarnacion Mocha <br />
+                <p className={`${montecarlo.className} text-slate-800 text-lg text-[20px] sm:text-[30px] leading-relaxed`}>
+                  Sara Encarnación Mocha <br />
                   Segundo Santos Rivera †
                 </p>
               </div>
 
+              {/* 5. Sección: Padres del novio */}
               <div className="mb-10">
-                <h3 className="text-stone-400 uppercase tracking-[0.15em] text-sm mb-4 font-light">
+                <h3 className={`${mea_culpa.className} text-stone-400 text-[40px] sm:text-[50px] text-sm mb-4 font-light`}>
+                  Padres del novio
+                </h3>
+                <p className={`${montecarlo.className} text-slate-800 text-lg text-[20px] sm:text-[30px] leading-relaxed`}>
+                  Esperanza Encalada Córdova <br />
+                  Nelson Ribera Sánchez
+                </p>
+              </div>
+
+              <div className="mb-10">
+                <h3 className={`${mea_culpa.className} text-stone-400 text-[40px] sm:text-[50px] text-sm mb-4 font-light`}>
                   Padrinos de Lazo
                 </h3>
-                <p className="text-slate-800 text-lg sm:text-xl font-serif leading-relaxed">
+                <p className={`${montecarlo.className} text-slate-800 text-lg text-[20px] sm:text-[30px] leading-relaxed`}>
                   Max Encalada <br />
                   Betty Reyes
                 </p>
               </div>
             </div>
           </section>
-      
+        </RevealSection>
 
         {/* 3 — Texto + BigDate + Countdown + CalendarMonth (panel baby blue) */}
-        
+        <RevealSection>
           <section
             className="relative px-4 sm:px-6 py-6 sm:py-8"
             style={{
@@ -254,11 +255,11 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
               </div>
             </div>
           </section>
-      
+        </RevealSection>
 
 
         {/* 6 — Imagen */}
-      
+        <RevealSection>
           <section className="grid gap-4">
             <div
               className="relative mt-0 w-full aspect-[16/10] overflow-hidden"
@@ -267,9 +268,9 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
               <Image src="/assets/6.jpg" alt="Momentos" fill sizes="100vw" className="object-cover" loading="lazy" />
             </div>
           </section>
-        
+        </RevealSection>
         {/* 4 — Venue */}
-        
+        <RevealSection>
           <section
             className={[
               "[--corner:clamp(112px,38vw,260px)]",
@@ -338,9 +339,9 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
 
             </div>
           </section>
-        
+        </RevealSection>
         {/* 6 — Imagen */}
-        
+        <RevealSection>
           <section className="grid gap-4">
             <div
               className="relative mt-0 w-full aspect-[16/10] overflow-hidden"
@@ -355,10 +356,10 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
               />
             </div>
           </section>
-        
+        </RevealSection>
 
         {/* 5 — Timeline */}
-        
+        <RevealSection>
           <section
             className={[
               "[--corner:clamp(112px,38vw,260px)]",
@@ -388,10 +389,10 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
               itemClassName={`${lora.className}`}
             />
           </section>
-        
+        </RevealSection>
 
         {/* 9 — Carrusel */}
-        
+        <RevealSection>
           <section className="grid gap-3 [--garland:clamp(110px,26vw,200px)]">
             <GalleryCarousel
               aspect={4 / 3}
@@ -406,9 +407,9 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
               className={`${cormorant.className} text-3xl`}
             />
           </section>
-        
+        </RevealSection>
         {/* 8 — Recomendaciones + Regalos */}
-        
+        <RevealSection>
           <RecGiftsSection
             className=""
             titleClassName={`${mea_culpa.className} text-[40px] sm:text-[50px] leading-tight mb-12 text-stone-600 `}
@@ -438,18 +439,18 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
             </section>
 
           )}
-      
+        </RevealSection>
 
 
 
         {/* 12 — Cierre */}
-        
+        <RevealSection>
           <HeroCover src="/assets/11.jpg" alt="Nos vemos pronto" objectPosition="60% 20%">
             <h1 className={`text-center text-5xl sm:text-8xl ${greatVibes.className} text-white drop-shadow`}>
               ¡Nos vemos en la boda!
             </h1>
           </HeroCover>
-        
+        </RevealSection>
       </div>
     </main>
   );
