@@ -174,28 +174,28 @@ export default function InvitationClient({ familyIdFromUrl }: { familyIdFromUrl?
                 Con la bendición de Dios y <br /> nuestros queridos padres
               </h2>
 
-              {/* 4. Sección: Padres de la novia */}
-              <div className="mb-10">
-                <h3 className={`${mea_culpa.className} text-stone-400 text-[40px] sm:text-[50px] text-sm mb-4 font-light`}>
-                  Padres de la novia
-                </h3>
-                <p className={`${montecarlo.className} text-slate-800 text-lg text-[20px] sm:text-[30px] leading-relaxed`}>
-                  Sara Encarnación Mocha <br />
-                  Segundo Santos Rivera †
-                </p>
-              </div>
-
               {/* 5. Sección: Padres del novio */}
               <div className="mb-10">
                 <h3 className={`${mea_culpa.className} text-stone-400 text-[40px] sm:text-[50px] text-sm mb-4 font-light`}>
-                  Padres del novio
+                  Padres de la novia
                 </h3>
                 <p className={`${montecarlo.className} text-slate-800 text-lg text-[20px] sm:text-[30px] leading-relaxed`}>
                   Esperanza Encalada Córdova <br />
                   Nelson Ribera Sánchez
                 </p>
               </div>
-
+              
+              {/* 4. Sección: Padres de la novia */}
+              <div className="mb-10">
+                <h3 className={`${mea_culpa.className} text-stone-400 text-[40px] sm:text-[50px] text-sm mb-4 font-light`}>
+                  Padres del novio
+                </h3>
+                <p className={`${montecarlo.className} text-slate-800 text-lg text-[20px] sm:text-[30px] leading-relaxed`}>
+                  Sara Encarnación Mocha <br />
+                  Segundo Santos Rivera †
+                </p>
+              </div>
+              
               <div className="mb-10">
                 <h3 className={`${mea_culpa.className} text-stone-400 text-[40px] sm:text-[50px] text-sm mb-4 font-light`}>
                   Padrinos de Lazo
