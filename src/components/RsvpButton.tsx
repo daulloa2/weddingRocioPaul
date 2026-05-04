@@ -281,7 +281,7 @@ export default function RsvpButton({
                   {greeting}
                 </div>
 
-                {typeof selected?.invitados?.total === "number" && (
+                {typeof selected?.invitados?.total === "number" && selected.invitados.total > 0 && (
                   <div className={`mt-3 text-lg sm:text-xl font-sans ${textClassName ?? ""}`} style={{ color: "#475569" }}>
                     Pase válido para {personasLabel(selected.invitados?.total)}
                   </div>
